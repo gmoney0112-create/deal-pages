@@ -1,96 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Art of War — Annotated Edition | Limited Release</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, system-ui, sans-serif; line-height: 1.6; color: #1a1a2e; background: #f8f9fa; }
-        .hero { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #fff; padding: 80px 20px; text-align: center; }
-        .hero h1 { font-size: 2.8em; margin-bottom: 20px; }
-        .hero p { font-size: 1.2em; max-width: 600px; margin: 0 auto 30px; opacity: 0.9; }
-        .container { max-width: 800px; margin: 0 auto; padding: 40px 20px; }
-        .price-card { background: #fff; border-radius: 16px; padding: 40px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.1); margin: 40px 0; }
-        .price { font-size: 3em; font-weight: 800; color: #e94560; }
-        .original { text-decoration: line-through; color: #999; font-size: 1.4em; }
-        .cta-btn { display: inline-block; background: #e94560; color: #fff; padding: 18px 48px; border-radius: 8px; text-decoration: none; font-size: 1.2em; font-weight: 700; margin: 20px 0; transition: transform 0.2s; }
-        .cta-btn:hover { transform: translateY(-2px); }
-        .features { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0; }
-        .feature { background: #fff; padding: 24px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .feature h3 { color: #1a1a2e; margin-bottom: 8px; }
-        .testimonials { margin: 40px 0; }
-        .testimonial { background: #fff; padding: 24px; border-radius: 12px; margin-bottom: 16px; border-left: 4px solid #e94560; }
-        .guarantee { text-align: center; padding: 40px; background: #fff; border-radius: 12px; margin: 40px 0; }
-        .footer { text-align: center; padding: 40px; color: #666; font-size: 0.9em; }
-        .upsell { background: linear-gradient(135deg, #2d3436 0%, #636e72 100%); color: #fff; padding: 40px; border-radius: 16px; margin: 40px 0; text-align: center; }
-        .upsell h2 { margin-bottom: 16px; }
-        .upsell .cta-btn { background: #ffa502; }
-        @media (max-width: 600px) { .hero h1 { font-size: 1.8em; } .features { grid-template-columns: 1fr; } }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soul Prosperity — Digital Library</title>
+  <meta name="description" content="Timeless wisdom. Modern format. Instant download. Classic books condensed and reformatted for entrepreneurs and business builders.">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #f0f0f0; line-height: 1.6; }
+
+    header {
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      background: radial-gradient(ellipse at top, #111827 0%, #0a0a0f 70%);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .brand { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #6b7280; margin-bottom: 1rem; }
+    header h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 1rem; }
+    header p { font-size: 1.1rem; color: #9ca3af; max-width: 520px; margin: 0 auto; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #4b5563; margin-bottom: 2rem; }
+
+    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+    .product-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .product-card:hover { border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
+
+    .card-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 2rem;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+    .badge-gold { background: rgba(212,175,55,0.15); border: 1px solid rgba(212,175,55,0.35); color: #d4af37; }
+    .badge-red  { background: rgba(220,38,38,0.15); border: 1px solid rgba(220,38,38,0.35); color: #ef4444; }
+    .badge-green{ background: rgba(34,197,94,0.12); border: 1px solid rgba(34,197,94,0.35); color: #4ade80; }
+
+    .product-card h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .product-card .tagline { font-size: 0.88rem; color: #9ca3af; margin-bottom: 1.5rem; flex: 1; }
+    .price-row { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.25rem; }
+    .price-now { font-size: 2rem; font-weight: 800; }
+    .price-was { font-size: 0.9rem; color: #4b5563; text-decoration: line-through; }
+
+    .price-gold  { color: #d4af37; }
+    .price-red   { color: #ef4444; }
+    .price-green { color: #4ade80; }
+
+    .btn {
+      display: block;
+      text-align: center;
+      font-size: 0.92rem;
+      font-weight: 700;
+      padding: 0.8rem 1.5rem;
+      border-radius: 0.5rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-gold  { background: #d4af37; color: #0a0a0f; }
+    .btn-red   { background: #dc2626; color: #fff; }
+    .btn-green { background: #16a34a; color: #fff; }
+    .btn-details { display: block; text-align: center; font-size: 0.78rem; color: #6b7280; margin-top: 0.6rem; text-decoration: none; }
+    .btn-details:hover { color: #9ca3af; }
+
+    .guarantee-note { font-size: 0.72rem; color: #4b5563; text-align: center; margin-top: 0.5rem; }
+
+    footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.75rem; color: #374151; }
+    footer a { color: #4b5563; text-decoration: none; }
+    footer a:hover { color: #9ca3af; }
+  </style>
 </head>
 <body>
-    <section class="hero">
-        <h1>Turn Strategy Into Results</h1>
-        <p>The Art of War — Annotated Edition. Ancient wisdom applied to modern business. 200 pages of actionable insights.</p>
-        <div class="price-card" style="background: rgba(255,255,255,0.1); margin: 0 auto; max-width: 500px;">
-            <div style="margin-bottom: 10px;"><span class="original">$47</span></div>
-            <div class="price">$17</div>
-            <div style="font-size: 0.9em; opacity: 0.7;">Instant digital delivery</div>
-            <a href="https://buy.stripe.com/test_3cs7tKbkJdL57KE003" class="cta-btn">Buy Now — $17</a>
-        </div>
-    </section>
 
-    <div class="container">
-        <div class="features">
-            <div class="feature">
-                <h3>📖 Annotated Edition</h3>
-                <p>Modern business commentary alongside the original text. Each chapter ends with actionable takeaways.</p>
-            </div>
-            <div class="feature">
-                <h3>⚡ Instant Access</h3>
-                <p>PDF + EPUB + MOBI formats. Read on any device. No apps required.</p>
-            </div>
-            <div class="feature">
-                <h3>📊 Strategy Templates</h3>
-                <p>12 battle-tested strategy templates based on Sun Tzu's principles. Fill in your situation.</p>
-            </div>
-            <div class="feature">
-                <h3>🎧 Audiobook Included</h3>
-                <p>Free MP3 audiobook version with every purchase. Listen on your commute.</p>
-            </div>
-        </div>
+  <header>
+    <div class="brand">Soul Prosperity</div>
+    <h1>Timeless Wisdom.<br>Modern Format.</h1>
+    <p>Classic books condensed and reformatted for entrepreneurs. Instant PDF download. 30-day guarantee on every title.</p>
+  </header>
 
-        <div class="upsell">
-            <h2>🔥 Want The Full Toolkit?</h2>
-            <p>Get the Complete Strategy Bundle — Annotated Edition + 12 Templates + 3 Bonus Ebooks + Lifetime Updates</p>
-            <div style="margin: 20px 0;">
-                <span class="original" style="font-size: 1.2em;">$147</span>
-                <div class="price" style="color: #ffa502;">$37</div>
-            </div>
-            <a href="https://buy.stripe.com/test_6oE6pK6AldL5fZ2001" class="cta-btn" style="background: #ffa502;">Get the Bundle — $37</a>
-        </div>
+  <main>
+    <div class="section-label">Available Now — 3 Titles</div>
+    <div class="products">
 
-        <div class="testimonials">
-            <div class="testimonial">
-                <p>"I read The Art of War 10 years ago. This annotated edition made me realize how much I missed. The business templates alone are worth 10x the price."</p>
-                <div style="margin-top: 8px; color: #666;">— Marcus C., Startup Founder</div>
-            </div>
-            <div class="testimonial">
-                <p>"Used the competitive strategy templates to analyze my market. Found 3 gaps I was blind to. This paid for itself in the first week."</p>
-                <div style="margin-top: 8px; color: #666;">— Sarah K., Marketing Director</div>
-            </div>
+      <div class="product-card">
+        <span class="card-badge badge-gold">Ancient Wisdom · Modern Format</span>
+        <h2>Meditations — Daily Wisdom Journal</h2>
+        <p class="tagline">Marcus Aurelius's Meditations reformatted as a 30-day journal with reflection prompts for entrepreneurs. 5 minutes a day.</p>
+        <div class="price-row">
+          <span class="price-now price-gold">$12</span>
+          <span class="price-was">$27</span>
         </div>
+        <a class="btn btn-gold" href="https://buy.stripe.com/cNi8wI2dc7nx48i3MJ1kA0b">Get Instant Access</a>
+        <a class="btn-details" href="./meditations/">See full details →</a>
+        <div class="guarantee-note">30-day money-back guarantee</div>
+      </div>
 
-        <div class="guarantee">
-            <h2>🔒 60-Day Money-Back Guarantee</h2>
-            <p>Read it cover to cover. If you don't find at least one strategy you can apply to win in your market, email me and I'll refund every cent.</p>
+      <div class="product-card">
+        <span class="card-badge badge-red">Ancient Strategy · Modern Weapons</span>
+        <h2>36 Stratagems — Business Playbook</h2>
+        <p class="tagline">The ancient Chinese war manual top CEOs study — in plain English with real business case studies for each of the 36 tactics.</p>
+        <div class="price-row">
+          <span class="price-now price-red">$22</span>
+          <span class="price-was">$57</span>
         </div>
+        <a class="btn btn-red" href="https://buy.stripe.com/cNi28k198fU37kucjf1kA0c">Get the Playbook</a>
+        <a class="btn-details" href="./36-stratagems/">See full details →</a>
+        <div class="guarantee-note">30-day money-back guarantee</div>
+      </div>
+
+      <div class="product-card">
+        <span class="card-badge badge-green">900 Pages → 80 Pages · Zero Fluff</span>
+        <h2>The Wealth of Nations — Modern Abridged</h2>
+        <p class="tagline">Adam Smith's 900-page foundation of modern economics condensed to 80 pages with direct applications for today's business builders.</p>
+        <div class="price-row">
+          <span class="price-now price-green">$9</span>
+          <span class="price-was">$24</span>
+        </div>
+        <a class="btn btn-green" href="https://buy.stripe.com/cNi8wR1PXeYI98OeRN3Ru0s">Get Instant Access</a>
+        <a class="btn-details" href="./wealth-of-nations/">See full details →</a>
+        <div class="guarantee-note">30-day money-back guarantee</div>
+      </div>
+
     </div>
+  </main>
 
-    <div class="footer">
-        <p>© 2026 Soul Prosperity Media LLC. All rights reserved.</p>
-        <p>support@soulprosperity.ai | 60-Day Guarantee | Instant Access</p>
-    </div>
+  <footer>
+    <p>© 2026 Soul Prosperity Group · All rights reserved</p>
+  </footer>
+
 </body>
 </html>
