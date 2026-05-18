@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kingdom Creator Store - From Page to Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #080604;
+  --white: #faf8f4;
+  --gold: #c8920a;
+  --gold-light: #e8b030;
+  --gold-pale: #fdf3d9;
+  --charcoal: #1c1a16;
+  --warm-gray: #6b6355;
+  --border: #d4c9b0;
+  --red: #9a1b1b;
+  --green: #2d6a2d;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--white);
+  color: var(--black);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+.announce {
+  background: var(--gold);
+  color: var(--black);
+  text-align: center;
+  padding: 0.55rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+nav {
+  background: var(--black);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; font-style: italic; color: var(--white); }
+.nav-brand span { color: var(--gold-light); }
+.nav-cta {
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.25rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold-light); }
+
+/* HERO */
+.hero {
+  background: var(--black);
+  color: var(--white);
+  padding: 5rem 2rem 4rem;
+  text-align: center;
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+.hero h1 em { display: block; font-style: italic; color: var(--gold-light); }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-style: italic;
+  color: #9a8870;
+  margin: 1rem auto 0;
+  max-width: 600px;
+}
+.hero-books {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin: 2rem auto;
+  max-width: 750px;
+}
+.hero-book {
+  background: rgba(200,146,10,0.08);
+  border: 1px solid #252018;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.7rem;
+  color: #c8bfaf;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.hero-book em { font-style: normal; color: var(--gold-light); font-weight: 600; }
+
+/* SECTION */
+.section-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* PRODUCTS */
+.products-section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+.products-section h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+.product-card {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+  transform: translateY(-3px);
+}
+.product-card.featured {
+  border: 2px solid var(--gold);
+  background: var(--black);
+  color: var(--white);
+  transform: scale(1.03);
+}
+.featured-tag {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.22rem 0.7rem;
+  white-space: nowrap;
+}
+.prod-format {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+.prod-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+.prod-desc {
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--warm-gray);
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+.prod-includes {
+  list-style: none;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.prod-includes li {
+  font-size: 0.75rem;
+  color: #3a3020;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  line-height: 1.4;
+}
+.prod-includes li::before { content: '✅'; font-size: 0.65rem; flex-shrink: 0; margin-top: 0.1rem; }
+.prod-price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.4rem;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 0.1rem;
+}
+.prod-price-note {
+  font-size: 0.65rem;
+  color: var(--warm-gray);
+  margin-bottom: 0.9rem;
+}
+.featured .prod-format { color: var(--gold-light); }
+.featured .prod-desc { color: #8a7a62; }
+.featured .prod-includes li { color: #c0b8a8; }
+.featured .prod-price { color: var(--gold-light); }
+.featured .prod-price-note { color: #5a4a32; }
+.btn-card {
+  display: block;
+  text-align: center;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+.btn-card:hover { background: var(--charcoal); }
+.featured .btn-card { background: var(--gold); color: var(--black); }
+.featured .btn-card:hover { background: var(--gold-light); }
+.btn-card.disabled { background: #666; color: #999; cursor: not-allowed; }
+
+/* BOOK REFERENCE */
+.books-reference {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  border-top: 1px solid var(--border);
+}
+.books-reference h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+.books-reference > p {
+  text-align: center;
+  color: var(--warm-gray);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+.book-item {
+  border: 1px solid var(--border);
+  padding: 0.8rem 1rem;
+  background: white;
+}
+.book-item .num { color: var(--gold); font-weight: 700; font-size: 0.75rem; display: block; }
+.book-item .title { font-family: 'Cormorant Garamond', serif; font-weight: 700; font-size: 1rem; }
+.book-item .desc { font-size: 0.75rem; color: var(--warm-gray); }
+.book-item a { color: var(--gold); text-decoration: none; font-size: 0.7rem; }
+.book-item a:hover { text-decoration: underline; }
+
+/* COMMUNITY */
+.community { background: var(--black); color: var(--white); padding: 4rem 2rem; }
+.community-inner { max-width: 1050px; margin: 0 auto; }
+.community-header { text-align: center; margin-bottom: 2.5rem; }
+.community-header h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+}
+.community-header h2 em { font-style: italic; color: var(--gold-light); }
+.community-header p { font-size: 0.9rem; color: #7a6a52; max-width: 500px; margin: 0 auto; }
+.comm-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+.comm-card {
+  border: 1px solid #252018;
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+.comm-card:hover { border-color: var(--gold); }
+.comm-card.highlight { border-color: var(--gold); background: rgba(200,146,10,0.04); }
+.comm-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
+.comm-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; margin-bottom: 0.4rem; }
+.comm-card .comm-desc { font-size: 0.8rem; color: #6a5a42; line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+.comm-price { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--gold-light); line-height: 1; }
+.comm-period { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: #4a3a22; margin-bottom: 0.4rem; }
+.comm-savings { display: inline-block; background: var(--gold); color: var(--black); font-size: 0.6rem; font-weight: 700; padding: 0.2rem 0.6rem; margin-bottom: 1rem; }
+.btn-comm {
+  display: block;
+  text-align: center;
+  border: 1px solid #3a2e1a;
+  color: #9a8870;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.75rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+.btn-comm:hover { border-color: var(--gold); color: var(--gold-light); }
+.highlight .btn-comm { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.highlight .btn-comm:hover { background: var(--gold-light); }
+
+/* GUARANTEE */
+.guarantee {
+  background: var(--charcoal);
+  color: var(--white);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.guarantee-inner { max-width: 580px; margin: 0 auto; }
+.guarantee h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 0.75rem; }
+.guarantee p { font-size: 0.9rem; color: #8a7a62; line-height: 1.75; }
+
+/* FINAL CTA */
+.final-cta {
+  background: var(--black);
+  color: var(--white);
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.final-cta h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 700;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+.final-cta h2 span { color: var(--gold-light); }
+.final-cta p { font-size: 0.95rem; color: #7a6a52; max-width: 480px; margin: 0 auto 2rem; }
+.btn-primary {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--black);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1rem 2.5rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(200,146,10,0.35); }
+
+/* FOOTER */
+footer {
+  background: #050402;
+  color: #3a3020;
+  padding: 2rem;
+  text-align: center;
+  border-top: 1px solid #1a1810;
+}
+footer p { font-size: 0.72rem; line-height: 1.8; }
+footer a { color: #5a4a32; text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+@media (max-width: 600px) {
+  .featured { transform: scale(1); }
+}
+</style>
+</head>
+<body>
+
+<div class="announce">🔥 Complete 7-Book Kingdom Creator Library — Start Building Your Legacy Today</div>
+
+<nav>
+  <div class="nav-brand">Kingdom <span>Creator</span> Store</div>
+  <a href="#products" class="nav-cta">Shop Now ↓</a>
+</nav>
+
+<section class="hero">
+  <h1>7 Books.<br><em>1 Kingdom System.</em></h1>
+  <p class="hero-tagline">From blank page to paid platform — every step of your journey, mapped out in 7 complete guides.</p>
+  <div class="hero-books">
+    <span class="hero-book">✍️ <em>Write</em> the eBook</span>
+    <span class="hero-book">🎙️ <em>Record</em> the Audiobook</span>
+    <span class="hero-book">📖 <em>Publish</em> the Paperback</span>
+    <span class="hero-book">🎓 <em>Build</em> the Course</span>
+    <span class="hero-book">👥 <em>Create</em> the Community</span>
+    <span class="hero-book">💰 <em>Master</em> the Wealth</span>
+    <span class="hero-book">🚀 <em>Scale</em> to $1K/Day</span>
+  </div>
+</section>
+
+<section class="products-section" id="products">
+  <span class="section-tag">Choose Your Entry Point</span>
+  <h2>Pick the Path That Fits Your Season</h2>
+
+  <div class="product-grid">
+
+    <!-- TIER 1: STARTER KIT -->
+    <div class="product-card">
+      <div class="prod-format">📱 Digital Bundle</div>
+      <div class="prod-name">Starter Kit</div>
+      <div class="prod-desc">All 7 eBooks in PDF. The complete Kingdom Creator library — from writing to $1K/day. One download, one price.</div>
+      <ul class="prod-includes">
+        <li>How to Write a 40-Page eBook</li>
+        <li>From Pages to Paydays (course creation)</li>
+        <li>From Page to Praise (audiobooks)</li>
+        <li>From PDF to Paperback (KDP)</li>
+        <li>From Pen to Platform (Skool community)</li>
+        <li>From Struggle to Strength (wealth)</li>
+        <li>From Broke to $1K/Day (funnel system)</li>
+      </ul>
+      <div class="prod-price">$12</div>
+      <div class="prod-price-note">One-time · All 7 PDFs · Instant access</div>
+      <a href="https://buy.stripe.com/fZu6oJfGNeYI3Ou9xt3Ru0n" class="btn-card">Buy Now →</a>
+    </div>
+
+    <!-- TIER 2: CREATOR BUNDLE -->
+    <div class="product-card">
+      <div class="prod-format">🎧 Audio Bundle</div>
+      <div class="prod-name">Creator Bundle</div>
+      <div class="prod-desc">All 7 eBooks + all 7 Audiobooks (pre-order). Read or listen on any device — take the Kingdom with you.</div>
+      <ul class="prod-includes">
+        <li>All 7 eBooks (PDF) — instant download</li>
+        <li>All 7 Audiobooks (MP3, coming 2025)</li>
+        <li>Read on any device · Listen anywhere</li>
+        <li>You get audiobooks FREE when released</li>
+      </ul>
+      <div class="prod-price">$17</div>
+      <div class="prod-price-note">One-time · eBooks now + audio when ready</div>
+      <a href="https://buy.stripe.com/7sY6oJdyFaIs3Ou3953Ru0o" class="btn-card">Buy Now →</a>
+    </div>
+
+    <!-- TIER 3: COURSE BUNDLE (BEST VALUE) -->
+    <div class="product-card featured">
+      <div class="featured-tag">🏆 Best Value</div>
+      <div class="prod-format">🎓 Complete System</div>
+      <div class="prod-name">Course Bundle</div>
+      <div class="prod-desc">All 7 eBooks + full video course + AI toolkit + templates. From blank page to paid platform — everything you need.</div>
+      <ul class="prod-includes">
+        <li>All 7 eBooks (PDF) — instant download</li>
+        <li>📹 Video Course: <a href="https://app.studyraid.com/en/courses/77676/modern-ebook-blueprint-from-vision-to-viral-legacy" target="_blank" style="color:var(--gold)">Modern eBook Blueprint</a></li>
+        <li>🤖 AI Writing Toolkit (prompts + frameworks)</li>
+        <li>📋 Template Pack + Worksheet Pack</li>
+        <li>📚 Course Creation Kit (bonus)</li>
+      </ul>
+      <div class="prod-price">$97</div>
+      <div class="prod-price-note">One-time · Everything included · Instant access</div>
+      <a href="https://buy.stripe.com/6Uo9AVamt6sc3OudNJ3Ru0q" class="btn-card">Get Everything →</a>
+    </div>
+
+    <!-- TIER 4: KINGDOM LAUNCH KIT -->
+    <div class="product-card">
+      <div class="prod-format">🚀 Premium System</div>
+      <div class="prod-name">Kingdom Launch Kit</div>
+      <div class="prod-desc">The Course Bundle + DFY funnel templates + GHL workflow + ad templates + swipe files. Launch your book in 48 hours.</div>
+      <ul class="prod-includes">
+        <li>Everything in Course Bundle</li>
+        <li>📈 Pre-built funnel templates</li>
+        <li>⚡ GHL email automation blueprint</li>
+        <li>📱 Meta ad creative templates</li>
+        <li>📧 Copywriting swipe files</li>
+        <li>🎯 Audience targeting guides</li>
+      </ul>
+      <div class="prod-price">$197</div>
+      <div class="prod-price-note">One-time · Launch-ready system</div>
+      <a href="https://buy.stripe.com/fZu4gBcuB5o8et810X3Ru0u" class="btn-card">Get Launch Kit →</a>
+    </div>
+
+    <!-- TIER 5: COMMUNITY -->
+    <div class="product-card">
+      <div class="prod-format">👑 Membership</div>
+      <div class="prod-name">Money Masters Academy</div>
+      <div class="prod-desc">Full Skool community. Courses, challenges, live calls, and accountability. Build with Kingdom builders.</div>
+      <ul class="prod-includes">
+        <li>Exclusive Skool community</li>
+        <li>Weekly live coaching calls</li>
+        <li>Challenges + accountability</li>
+        <li>Feedback on your work</li>
+        <li>Networking with Kingdom creators</li>
+      </ul>
+      <div class="prod-price">$47</div>
+      <div class="prod-price-note">Per month · Free 7-day trial</div>
+      <a href="https://www.skool.com/money-masters-academy-5443" class="btn-card">Free Trial →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- BOOKS REFERENCE -->
+<section class="books-reference">
+  <h3>📖 The Complete Kingdom Creator Library</h3>
+  <p>7 books. 1 system. Every step from blank page to $1K/day platform.</p>
+  <div class="book-list">
+    <div class="book-item">
+      <span class="num">Book 1 · WRITE</span>
+      <div class="title">How to Write a 40-Page eBook</div>
+      <div class="desc">54 pages · 12 chapters · From zero to published author in a weekend.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/How-to-Write-a-40-Page-eBook.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 2 · COURSE</span>
+      <div class="title">From Pages to Paydays</div>
+      <div class="desc">46 pages · Turn your eBook into a full video course with AI.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-Pages-to-Paydays.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 3 · AUDIO</span>
+      <div class="title">From Page to Praise</div>
+      <div class="desc">54 pages · Create professional audiobooks with free AI tools.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-Page-to-Praise.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 4 · PAPERBACK</span>
+      <div class="title">From PDF to Paperback</div>
+      <div class="desc">46 pages · Publish on Amazon KDP even if you're broke.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-PDF-to-Paperback.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 5 · COMMUNITY</span>
+      <div class="title">From Pen to Platform</div>
+      <div class="desc">48 pages · Build a Skool community that pays.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-Pen-to-Platform.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 6 · WEALTH</span>
+      <div class="title">From Struggle to Strength</div>
+      <div class="desc">42 pages · Street-smart guide to building wealth.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-Struggle-to-Strength.pdf" target="_blank">📄 Preview PDF →</a>
+    </div>
+    <div class="book-item">
+      <span class="num">Book 7 · SCALE</span>
+      <div class="title">From Broke to $1K/Day</div>
+      <div class="desc">12 chapters · Build a digital product income system from scratch.</div>
+      <a href="https://gmoney0112-create.github.io/deal-pages/downloads/kingdom-books/From-Broke-to-1KDay.txt" target="_blank">📄 Read Online →</a>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY -->
+<section class="community">
+  <div class="community-inner">
+    <div class="community-header">
+      <span class="section-tag">Money Masters Academy</span>
+      <h2>Join the <em>Kingdom Community</em></h2>
+      <p>You were never meant to build alone. Courses, live calls, accountability, and a brotherhood of Kingdom creators.</p>
+    </div>
+    <div class="comm-grid">
+      <div class="comm-card">
+        <div class="comm-label">Free Trial</div>
+        <h3>Monthly Access</h3>
+        <p class="comm-desc">Full Skool community access. Courses, challenges, live calls, and accountability. Cancel anytime.</p>
+        <div class="comm-price">$47</div>
+        <div class="comm-period">Per month · 7-Day Free Trial</div>
+        <a href="https://www.skool.com/money-masters-academy-5443" class="btn-comm">Start Free Trial →</a>
+      </div>
+      <div class="comm-card highlight">
+        <div class="comm-label">Best Deal</div>
+        <h3>Annual Membership</h3>
+        <p class="comm-desc">Everything in monthly, locked at the annual rate. Committed Kingdom builders invest in the long game.</p>
+        <div class="comm-price">$247</div>
+        <div class="comm-period">Per year</div>
+        <div class="comm-savings">Save 56% vs Monthly</div>
+        <span class="btn-comm" style="opacity:0.4;cursor:not-allowed">Coming Soon</span>
+      </div>
+      <div class="comm-card">
+        <div class="comm-label">One-Time · Forever</div>
+        <h3>Lifetime Access</h3>
+        <p class="comm-desc">Never pay again. All future courses, updates, and community access. Price increases when Skool hits $67/mo.</p>
+        <div class="comm-price">$497</div>
+        <div class="comm-period">One-time · Lifetime</div>
+        <a href="https://buy.stripe.com/00w5kF66d17S1Gm2513Ru0r" class="btn-comm">Get Lifetime Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee">
+  <div class="guarantee-inner">
+    <h3>🛡️ 30-Day Satisfaction Guarantee</h3>
+    <p>Not feeling it? Send me an email and I'll refund every dollar. <strong>No questions asked.</strong> I want this to be a yes from your spirit, not a hustle.</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Your 7-book library is waiting.<br><span>Start with one. End with the system.</span></h2>
+  <p>Every Kingdom creator starts somewhere. Your first $12 gets you all 7 eBooks — the complete playbook from page to platform.</p>
+  <a href="#products" class="btn-primary">Choose Your Path →</a>
+</section>
+
+<footer>
+  <p>
+    © 2025 Terrance Gee · Soul Prosperity Group · Kingdom Creator Library<br>
+    <a href="https://gmoney0112-create.github.io/soul-prosperity">Soul Prosperity Store</a> · 
+    <a href="https://www.skool.com/money-masters-academy-5443">Skool Community</a> · 
+    <a href="https://gmoney0112-create.github.io/deal-pages">Deal Pages</a>
+  </p>
+</footer>
+
+</body>
+</html>
