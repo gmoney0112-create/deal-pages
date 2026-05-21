@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Your Course Access is Ready</title>
+    <meta name="description" content="Your ebook writing course purchase is complete! Join our exclusive writer's community to accelerate your success.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teal-custom': '#0D9488',
+                        'success': '#10B981',
+                        'warning': '#F59E0B'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    
+    <style>
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .community-offer {
+            background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+            border: 2px solid #10B981;
+        }
+        .downsell-offer {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border: 2px solid #F59E0B;
+        }
+        .pulse-button {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .success-bg {
+            background: linear-gradient(135deg, #FEFEFE 0%, #ECFDF5 100%);
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900">
+    
+    <!-- Confetti Container -->
+    <div id="confetti-container" class="confetti-container"></div>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-display font-bold text-xl text-teal-custom">
+                    Write Your eBook
+                </div>
+                <div class="text-sm text-gray-600">
+                    Order Complete ✓
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Hero Section -->
+    <section class="success-bg py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Success Icon -->
+            <div class="w-24 h-24 bg-success rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+
+            <h1 class="font-display font-bold text-4xl lg:text-5xl text-gray-900 mb-4">
+                Congratulations! 🎉
+            </h1>
+            <p class="text-xl text-gray-700 mb-8 leading-relaxed">
+                Your order is complete! You're now part of the 2,847+ writers who've taken the first step toward becoming published authors.
+            </p>
+
+            <!-- Order Summary -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 mb-8 max-w-2xl mx-auto">
+                <h2 class="font-semibold text-xl text-gray-900 mb-4">Your Order Summary</h2>
+                <div id="order-summary" class="space-y-3 text-left">
+                    <!-- Order details will be populated by JavaScript -->
+                </div>
+                <div class="border-t border-gray-200 mt-4 pt-4">
+                    <div class="flex justify-between items-center text-lg font-semibold">
+                        <span>Total Paid</span>
+                        <span id="total-paid" class="text-teal-custom">$0.00</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 mb-8 max-w-2xl mx-auto">
+                <h3 class="font-semibold text-xl text-gray-900 mb-4">What's Next?</h3>
+                <div class="space-y-4 text-left">
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                        <div>
+                            <div class="font-medium text-gray-900">Check Your Email</div>
+                            <div class="text-gray-600 text-sm">Your login details and course access link have been sent to your email address.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                        <div>
+                            <div class="font-medium text-gray-900">Start Module 1</div>
+                            <div class="text-gray-600 text-sm">Begin with "Why Write an eBook?" and discover your calling as a writer.</div>
+                        </div>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="w-8 h-8 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                        <div>
+                            <div class="font-medium text-gray-900">Download Your Bonuses</div>
+                            <div class="text-gray-600 text-sm">Access your templates, guides, and any additional materials you purchased.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Invitation Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">
+                    Ready to Accelerate Your Success?
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Writing your eBook is just the beginning. Join our exclusive community of writers who support, encourage, and hold each other accountable to finish and publish their books.
+                </p>
+            </div>
+
+            <!-- Main Community Offer -->
+            <div id="community-offer-main" class="community-offer rounded-3xl p-8 lg:p-12 max-w-4xl mx-auto mb-8">
+                <div class="grid lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <div class="flex items-center space-x-2 mb-4">
+                            <span class="bg-success text-white text-sm px-3 py-1 rounded-full font-medium">EXCLUSIVE INVITATION</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl lg:text-3xl text-gray-900 mb-4">
+                            Join the Write Your eBook Skool Community
+                        </h3>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            Get the support, accountability, and guidance you need to finish your book. Connect with fellow writers, get feedback on your work, and learn from those who've already published.
+                        </p>
+                        
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">Weekly live Q&A calls with Terrance</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">Small accountability groups (max 8 people)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">Manuscript feedback and editing help</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">Publishing and marketing support</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                                <span class="text-gray-700">24/7 community chat and support</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
+                            <div class="text-center mb-6">
+                                <div class="text-4xl font-bold text-teal-custom mb-2">$197</div>
+                                <div class="text-gray-600 mb-1">per year</div>
+                                <div class="text-sm text-success font-medium">Save $67 vs monthly!</div>
+                            </div>
+                            
+                            <button id="join-community-btn" class="w-full bg-teal-custom text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-teal-700 transition-all transform hover:scale-105 pulse-button mb-4">
+                                Join the Community - $197/year
+                            </button>
+                            
+                            <div class="text-center text-sm text-gray-600">
+                                ✓ 30-day money-back guarantee<br>
+                                ✓ Cancel anytime
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decline Option -->
+            <div class="text-center">
+                <button id="decline-community-btn" class="text-gray-600 hover:text-gray-800 underline text-sm">
+                    No thanks, I'll write alone
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downsell Offer Section (Hidden Initially) -->
+    <section id="downsell-offer-section" class="py-16 bg-gray-50 hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="downsell-offer rounded-3xl p-8 lg:p-12 text-center">
+                <div class="mb-6">
+                    <span class="bg-warning text-white text-sm px-3 py-1 rounded-full font-medium">WAIT! SPECIAL OFFER</span>
+                </div>
+                
+                <h3 class="font-display font-bold text-2xl lg:text-3xl text-gray-900 mb-4">
+                    Not Ready for Annual? Try Monthly!
+                </h3>
+                <p class="text-gray-700 mb-6 leading-relaxed max-w-2xl mx-auto">
+                    I understand annual commitments can feel like a lot. That's why I'm offering you a monthly option to try the community risk-free. Get the same incredible value, just billed monthly.
+                </p>
+                
+                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg max-w-md mx-auto mb-6">
+                    <div class="text-center mb-6">
+                        <div class="text-4xl font-bold text-warning mb-2">$47</div>
+                        <div class="text-gray-600 mb-1">per month</div>
+                        <div class="text-sm text-gray-500">Cancel anytime, no commitment</div>
+                    </div>
+                    
+                    <button id="join-monthly-btn" class="w-full bg-warning text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-yellow-600 transition-all transform hover:scale-105 pulse-button mb-4">
+                        Join Monthly - $47/month
+                    </button>
+                    
+                    <div class="text-center text-sm text-gray-600">
+                        ✓ 30-day money-back guarantee<br>
+                        ✓ Cancel anytime, no questions asked
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <button id="decline-monthly-btn" class="text-gray-600 hover:text-gray-800 underline text-sm">
+                        No thanks, I'll figure it out on my own
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div id="final-message">
+                <h3 class="font-display font-bold text-2xl text-gray-900 mb-4">
+                    Welcome to the Write Your eBook Family! 📚
+                </h3>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Whether you join the community or not, you're now part of something bigger. You've taken the first step toward sharing your story and changing lives. I'm excited to see what God does through your writing.
+                </p>
+                
+                <div class="bg-teal-50 rounded-2xl p-6 mb-6">
+                    <h4 class="font-semibold text-gray-900 mb-2">Your Next Steps:</h4>
+                    <ol class="text-left text-gray-700 space-y-2">
+                        <li>1. Check your email for course access details</li>
+                        <li>2. Log in and start Module 1: "Why Write an eBook?"</li>
+                        <li>3. Download your templates and bonus materials</li>
+                        <li>4. Set aside 30 minutes daily for your writing journey</li>
+                    </ol>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    Questions? Email me directly at terrance@writeyourebook.com
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-sm text-gray-500">
+                © 2025 Terrance Gee. All rights reserved. | 
+                <a href="#" class="text-teal-custom hover:underline">Privacy Policy</a> | 
+                <a href="#" class="text-teal-custom hover:underline">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="thank-you.js"></script>
+</body>
+</html>

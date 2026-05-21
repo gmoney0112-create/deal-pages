@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Write a 40-Page eBook - Online Course | Terrance Gee</title>
+    <meta name="description" content="Learn how to write and publish your first 40-page ebook in 30 days or less - even if you've never written anything before. Faith-based course for young adults.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teal-custom': '#0D9488',
+                        'success': '#10B981',
+                        'warning': '#F59E0B'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <link href="https://unpkg.com/splitting@1.0.6/dist/splitting.css" rel="stylesheet">
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.min.js"></script>
+    
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #FEFEFE 0%, #F3F4F6 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0D9488, #14B8A6, #0D9488);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .reveal-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal-element.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(13, 148, 136, 0.15);
+        }
+        .pulse-cta {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        #p5-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .content-overlay {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body class="font-body bg-white text-gray-900">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-display font-bold text-xl text-teal-custom">
+                    Write Your eBook
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#course" class="text-gray-600 hover:text-teal-custom transition-colors">Course</a>
+                    <a href="#testimonials" class="text-gray-600 hover:text-teal-custom transition-colors">Success Stories</a>
+                    <a href="#guarantee" class="text-gray-600 hover:text-teal-custom transition-colors">Guarantee</a>
+                </div>
+                <button onclick="window.location.href='checkout.html'" class="bg-teal-custom text-white px-6 py-2 rounded-lg font-medium hover:bg-teal-700 transition-colors pulse-cta">
+                    Get Started - $47
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-16 relative overflow-hidden">
+        <div id="hero-canvas" class="absolute inset-0"></div>
+        <div class="content-overlay max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="font-display font-bold text-5xl lg:text-6xl leading-tight">
+                            <span class="gradient-text">How to Write a 40-Page eBook</span>
+                            <br>
+                            <span class="text-gray-900">(Even If You've Never Written a Grocery List)</span>
+                        </h1>
+                        <div class="text-xl text-gray-600 leading-relaxed">
+                            <span id="typed-text"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-6 text-sm text-gray-500">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span>30 Days or Less</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span>Faith-Based Approach</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="w-8 h-8 bg-success rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <span>No Experience Needed</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 shadow-lg">
+                            <div class="text-3xl font-bold text-teal-custom mb-2">$47</div>
+                            <div class="text-gray-600 mb-4">One-time payment. Lifetime access.</div>
+                            <button onclick="window.location.href='checkout.html'" class="w-full bg-teal-custom text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-teal-700 transition-all hover-lift pulse-cta">
+                                Start Writing Your eBook Today
+                            </button>
+                            <div class="mt-4 text-sm text-gray-500 text-center">
+                                ⭐ 30-Day Money-Back Guarantee ⭐
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="bg-white rounded-2xl p-8 shadow-2xl border border-gray-200">
+                        <img src="https://kimi-web-img.moonshot.cn/img/unblast.com/6b8e18939ca868d693131e01f0b12d9568efcb1c.jpg" alt="eBook writing course" class="w-full rounded-lg mb-6">
+                        <div class="space-y-4">
+                            <h3 class="font-display font-bold text-xl">What You'll Get:</h3>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>12 Step-by-Step Video Modules</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>40-Page eBook Template</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Publishing & Marketing Guide</span>
+                                </li>
+                                <li class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Bonus: Faith-Based Writing Prompts</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal-element">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">
+                    Join 2,847+ Writers Who've Published Their First eBook
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Young adults from all backgrounds are sharing their stories and building legacies through writing
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 mb-16 reveal-element">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-teal-custom mb-2" data-count="2847">0</div>
+                    <div class="text-gray-600">Students Enrolled</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-teal-custom mb-2" data-count="1243">0</div>
+                    <div class="text-gray-600">Books Published</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-teal-custom mb-2" data-count="94">0</div>
+                    <div class="text-gray-600">% Success Rate</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-teal-custom mb-2" data-count="4.9">0</div>
+                    <div class="text-gray-600">★ Average Rating</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">
+                    Real Stories from Real Writers
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    See how ordinary young adults are becoming published authors and changing lives
+                </p>
+            </div>
+
+            <div class="splide" id="testimonial-slider">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/foto.wuestenigel.com/57ded1f465b8bb3e8f8ea6d809969d1e8e5fae62.jpeg" alt="Maria Rodriguez" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Maria Rodriguez</div>
+                                        <div class="text-gray-600">Houston, TX</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "I never thought I could write a book. I dropped out of high school and barely passed English. But Terrance's course showed me my story mattered. I wrote 'From GED to Glory' in 3 weeks and it's already helping 15 other young moms. God used this course to show me I have a voice."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "From GED to Glory: How I Broke the Cycle for My Kids"<br>
+                                        <strong>Sold:</strong> 127 copies in first month
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/5cf06286b547a1d1c6b8b5b6cd4dd06b24cdc296.jpg" alt="DeShawn Johnson" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">DeShawn Johnson</div>
+                                        <div class="text-gray-600">Detroit, MI</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "Bro, I was sleeping in my car when I started this course. I wrote 'Faith in the Driver's Seat' about my journey from homeless to hopeful. The 12-chapter structure made it so simple. Now I'm speaking at youth groups and my book is helping kids who were just like me. This ain't just a course—it's a calling."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "Faith in the Driver's Seat: Finding God in Your Lowest Moments"<br>
+                                        <strong>Impact:</strong> Speaking at 8 churches, book in 3 youth programs
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/livepositively.com/452007e1e8f54b2dc242f3d5989c26a122349da8.webp" alt="Sarah Chen" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Sarah Chen</div>
+                                        <div class="text-gray-600">Los Angeles, CA</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "As a first-generation college student, I felt like I didn't belong anywhere. This course helped me write 'Between Two Worlds' about navigating Asian-American identity with faith. The viral inspiration chapter was everything! I used Beyoncé's album drop strategy and sold 89 copies in one week. My parents are actually proud of me now."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "Between Two Worlds: Finding Your Voice as a First-Gen Christian"<br>
+                                        <strong>Success:</strong> 89 copies first week, featured in 2 campus ministries
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/www.a-simple-christian.com/779e5256e23ab1f501f2323e6028b699e886a4ba.jpg" alt="Marcus Thompson" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Marcus Thompson</div>
+                                        <div class="text-gray-600">Atlanta, GA</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "I did 3 years in prison and thought my story was too messed up to share. Terrance showed me that's exactly why I needed to write it. I wrote 'Letters from Cell Block D to Destiny' using Paul's letters as inspiration. The storytelling chapter helped me turn my pain into purpose. Now I mentor at-risk youth and my book is required reading in a juvenile detention center."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "Letters from Cell Block D to Destiny: Finding God Behind Bars"<br>
+                                        <strong>Ministry:</strong> Mentoring 25 youth, book in juvenile detention curriculum
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/www.thechristianshop.co.uk/55facf6fc5a7838ada50bddc71aeda2a615cad4f.jpg" alt="Emma Williams" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Emma Williams</div>
+                                        <div class="text-gray-600">Nashville, TN</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "I struggled with anxiety and depression for years. This course gave me permission to write 'Peace in the Pieces' about my mental health journey with God. The faith factor chapter was perfect - it showed me how to share scripture without being preachy. I've sold 203 copies and get messages daily from people saying my book saved their life."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "Peace in the Pieces: A Christian's Guide to Mental Health"<br>
+                                        <strong>Impact:</strong> 203 copies sold, daily messages from readers
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="splide__slide">
+                            <div class="testimonial-card rounded-2xl p-8 mx-4 shadow-lg border border-gray-200">
+                                <div class="flex items-center mb-6">
+                                    <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/311242332ead7fc16b6e6e3a9961ade7ae5807d4.jpg" alt="Jose Martinez" class="w-16 h-16 rounded-full object-cover mr-4">
+                                    <div>
+                                        <div class="font-semibold text-gray-900">Jose Martinez</div>
+                                        <div class="text-gray-600">Phoenix, AZ</div>
+                                        <div class="flex text-warning">★★★★★</div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 text-lg leading-relaxed mb-4">
+                                    "I'm a DACA recipient and always felt like I didn't belong. This course helped me write 'Dreamer with a Destiny' about finding identity in Christ when the world says you don't belong. The marketing chapter was fire - I used Drake's album drop strategy and got featured on a podcast! Now I'm speaking at immigration rallies with my book."
+                                </p>
+                                <div class="bg-teal-50 rounded-lg p-4">
+                                    <div class="text-sm text-teal-800">
+                                        <strong>Book:</strong> "Dreamer with a Destiny: Finding Your Identity in Christ"<br>
+                                        <strong>Platform:</strong> Featured on 2 podcasts, speaking at immigration events
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Curriculum Section -->
+    <section id="course" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal-element">
+                <h2 class="font-display font-bold text-3xl lg:text-4xl text-gray-900 mb-4">
+                    Everything You Need to Write, Publish & Market Your eBook
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    12 comprehensive modules that take you from blank page to published author in 30 days or less
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto space-y-4 reveal-element">
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module1">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">1</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Why Write an eBook? (And Why God Cares About Your Voice)</div>
+                                <div class="text-gray-600">Discover your calling as a writer</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module1" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Understanding your story's value (even if you think it's "ordinary")</li>
+                            <li>• Biblical foundation: Habakkuk 2:2 and God's call to write</li>
+                            <li>• Why your testimony matters more than your credentials</li>
+                            <li>• The difference between a diary and a destiny-altering book</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module2">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">2</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Choosing Your Message (What's in Your Spirit to Share)</div>
+                                <div class="text-gray-600">Find the book idea that's already inside you</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module2" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• The 3 places your message hides: what you've survived, learned, and care about</li>
+                            <li>• How to explain your book in one sentence (the TikTok generation test)</li>
+                            <li>• Prayer and confirmation: checking your message with God</li>
+                            <li>• Real examples: "Faith Over Fear," "Survival Guide for Broke Young Adults"</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module3">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">3</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Viral Inspiration (From Beyoncé to Paul the Apostle)</div>
+                                <div class="text-gray-600">Make your message memorable and shareable</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module3" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Lessons from Beyoncé: building hype and launching like an event</li>
+                            <li>• Cardi B authenticity: why being real beats being perfect</li>
+                            <li>• Paul the Apostle: the original content creator who went viral without WiFi</li>
+                            <li>• Creating tweetable quotes and Instagram-worthy moments</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">4</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Structuring Like a Pro (12 Chapters, 40 Pages, One Mission)</div>
+                                <div class="text-gray-600">The simple formula that eliminates overwhelm</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module4" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• The mixtape analogy: why your book should flow like an album</li>
+                            <li>• 12 chapters × 3-4 pages each = 40 pages (the sweet spot)</li>
+                            <li>• The 5-step rhythm: Hook → Story → Lesson → Faith → Action</li>
+                            <li>• Real example: "Faith and French Fries" chapter breakdown</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module5">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">5</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Writing with Flow (How to Sound Smart, Funny, and Spirit-Led)</div>
+                                <div class="text-gray-600">Find your authentic voice without trying too hard</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module5" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Flow = Voice + Clarity + Spirit (the winning formula)</li>
+                            <li>• How to write how you talk (voice recording trick)</li>
+                            <li>• Twitter-style sentences that hit harder than essays</li>
+                            <li>• Praying before you write: asking God for the words</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">6</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Storytelling That Hits (Making Readers Laugh, Cry, and Say 'Amen')</div>
+                                <div class="text-gray-600">The show vs. tell rule that transforms writing</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module6" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Why stories stick (and facts get forgotten)</li>
+                            <li>• The 3-part story formula: Scene → Struggle → Shift</li>
+                            <li>• Showing vs. telling: "My card got declined on a $1 McChicken"</li>
+                            <li>• How to be vulnerable without being messy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module7">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">7</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Adding the Faith Factor (Scripture, Testimony & Transformation)</div>
+                                <div class="text-gray-600">Weave in God's truth without being preachy</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module7" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Connecting scripture to your story naturally</li>
+                            <li>• Relatable > Religious: keeping it real for Gen Z</li>
+                            <li>• Your testimony = someone else's survival guide</li>
+                            <li>• Moving readers from hopeless → hopeful in every chapter</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module8">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">8</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Editing Without Losing Your Sauce (Holy Ghost + Grammarly)</div>
+                                <div class="text-gray-600">Polish your writing while keeping your personality</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module8" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Grammarly, Hemingway App, and ChatGPT for editing</li>
+                            <li>• Reading out loud: the awkward test that works</li>
+                            <li>• Keeping your slang and personality (but sparingly)</li>
+                            <li>• Cutting the fluff: if it doesn't teach, inspire, or entertain—delete it</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module9">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">9</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Design & Covers (Making It Look TikTok-Viral Ready)</div>
+                                <div class="text-gray-600">Create a cover that stops the scroll</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module9" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Canva tutorial: creating professional covers for free</li>
+                            <li>• Color psychology: what makes people click</li>
+                            <li>• Font choices that scream "download me"</li>
+                            <li>• Interior design: spacing, headings, and Instagram-worthy quotes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module10">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">10</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Publishing Like a Boss (From PDF to Amazon KDP)</div>
+                                <div class="text-gray-600">Get your book live worldwide in 24 hours</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module10" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• DIY vs. Pro publishing lanes (and when to use each)</li>
+                            <li>• Amazon KDP step-by-step: from manuscript to live book</li>
+                            <li>• Pricing strategies: $2.99-$4.99 sweet spot</li>
+                            <li>• Categories and keywords that get you discovered</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module11">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">11</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Marketing Like You're Drake Dropping an Album</div>
+                                <div class="text-gray-600">Build hype and sell books without being pushy</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module11" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Building anticipation: countdowns, quotes, behind-the-scenes</li>
+                            <li>• Instagram/TikTok strategies for book marketing</li>
+                            <li>• Collaborations and shoutouts that multiply your reach</li>
+                            <li>• Making your launch feel like an event people don't want to miss</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                    <button class="curriculum-toggle w-full px-8 py-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors" data-target="module12">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-10 h-10 bg-teal-custom text-white rounded-full flex items-center justify-center font-bold">12</div>
+                            <div>
+                                <div class="font-semibold text-lg text-gray-900">Leaving Legacy (How Your eBook Can Change Lives Forever)</div>
+                                <div class="text-gray-600">Build something that outlives you</div>
+                            </div>
+                        </div>
+                        <svg class="w-5 h-5 text-gray-400 transform transition-transform" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                    <div id="module12" class="curriculum-content hidden px-8 pb-6">
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Paul's letters: how writing creates eternal impact</li>
+                            <li>• Maintaining momentum: reader engagement and community</li>
+                            <li>• Expanding your platform: follow-up books and speaking</li>
+                            <li>• The Kingdom mindset: building bridges, not just brands</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section id="guarantee" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl mx-auto text-center reveal-element">
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-3xl p-12 shadow-xl">
+                    <div class="w-20 h-20 bg-teal-custom rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <h2 class="font-display font-bold text-3xl text-gray-900 mb-4">
+                        30-Day Money-Back Guarantee
+                    </h2>
+                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                        I'm so confident this course will help you write your eBook that I'm giving you a full 30 days to try it risk-free. If you don't feel like you're making progress, if you're not inspired, or if you're not completely satisfied for any reason, just email me and I'll refund every penny. No questions asked.
+                    </p>
+                    <div class="text-lg text-teal-800 font-medium">
+                        "Because God's calling on your life is worth the investment."
+                        <br><span class="text-base font-normal">- Terrance Gee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="max-w-4xl mx-auto reveal-element">
+                <h2 class="font-display font-bold text-4xl lg:text-5xl mb-6">
+                    Your Story Is Waiting to Be Written
+                </h2>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                    The world needs what God's placed inside you. Don't let fear, doubt, or "I'm not a writer" keep you silent. Your testimony could be the exact thing someone needs to keep going. Take the first step today.
+                </p>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 max-w-md mx-auto">
+                    <div class="text-4xl font-bold text-teal-400 mb-2">$47</div>
+                    <div class="text-gray-300 mb-4">One-time investment in your calling</div>
+                    <button onclick="window.location.href='checkout.html'" class="w-full bg-teal-custom text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-teal-700 transition-all hover-lift pulse-cta">
+                        Start Your Writing Journey Now
+                    </button>
+                    <div class="mt-4 text-sm text-gray-400">
+                        ⭐ 30-Day Money-Back Guarantee ⭐
+                    </div>
+                </div>
+
+                <div class="text-gray-400 text-sm">
+                    "Write the vision and make it plain..." - Habakkuk 2:2
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="font-display font-bold text-2xl text-teal-custom mb-4">
+                    Write Your eBook
+                </div>
+                <div class="text-gray-600 mb-4">
+                    Helping young adults share their stories and change lives through writing
+                </div>
+                <div class="text-sm text-gray-500">
+                    © 2025 Terrance Gee. All rights reserved. | 
+                    <a href="#" class="text-teal-custom hover:underline">Privacy Policy</a> | 
+                    <a href="#" class="text-teal-custom hover:underline">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - How to Write a 40-Page eBook Course</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Thank You Hero -->
+    <section class="thank-you-hero">
+        <div class="container">
+            <h1>🎉 Congratulations! Welcome to the Author Community!</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 30px; opacity: 0.95;">
+                Your purchase is complete. Check your email for your login credentials and course access details.
+            </p>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
+                <h3 style="color: white; margin-bottom: 20px;">What's Next:</h3>
+                <ul style="text-align: left; line-height: 2;">
+                    <li>✓ Check your email for login details</li>
+                    <li>✓ Access the course dashboard</li>
+                    <li>✓ Join our private community</li>
+                    <li>✓ Start your first lesson!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upsell Section -->
+    <section class="upsell-section">
+        <div class="container">
+            <h2>⚡ WAIT! You're Leaving Money on the Table...</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.95;">
+                Most successful authors don't do it alone. Join our exclusive community and get the support you need to succeed!
+            </p>
+
+            <div style="background: white; padding: 40px; border-radius: 16px; max-width: 700px; margin: 0 auto; color: #1f2937;">
+                <h3 style="color: #2563eb; margin-bottom: 20px; font-size: 2rem;">
+                    🌟 Join Our Private Skool Community
+                </h3>
+                
+                <div class="original-price">Regular Price: $297/year</div>
+                <div style="font-size: 3rem; font-weight: 800; color: #10b981; margin: 10px 0;">
+                    $197/year
+                </div>
+                <div style="color: #f59e0b; font-weight: 600; margin-bottom: 30px;">
+                    🔥 LIMITED TIME: Save $100 (34% OFF!)
+                </div>
+
+                <ul style="text-align: left; margin-bottom: 30px; line-height: 2;">
+                    <li><strong>🎯 Weekly Group Coaching Calls</strong> - Get personalized feedback</li>
+                    <li><strong>📚 Advanced Training Library</strong> - Master your craft</li>
+                    <li><strong>🤝 Networking with Authors</strong> - Connect with like-minded writers</li>
+                    <li><strong>💡 Monthly Workshops</strong> - Learn from industry experts</li>
+                    <li><strong>📖 Book Launch Support</strong> - Get help when you publish</li>
+                    <li><strong>🎁 Exclusive Bonuses</strong> - Templates, checklists &amp; more</li>
+                    <li><strong>💬 24/7 Community Support</strong> - Never write alone</li>
+                </ul>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <a href="#" onclick="acceptUpsell(); return false;" class="btn btn-success btn-large pulse">
+                        YES! Add to Order - $197/year
+                    </a>
+                    <a href="#" onclick="showDownsell(); return false;" class="btn btn-warning btn-large">
+                        No thanks, I'll pass
+                    </a>
+                </div>
+
+                <div class="guarantee-badge" style="justify-content: center; margin-top: 20px;">
+                    🔒 30-Day Money-Back Guarantee
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downsell Section (Hidden by default) -->
+    <section class="downsell-section" id="downsell-section" style="display: none;">
+        <div class="container">
+            <h2>😢 Wait... We Don't Want You to Miss Out!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; color: #6b7280;">
+                We understand $197 might not fit your budget right now. That's why we created a special monthly option just for you...
+            </p>
+
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 16px; max-width: 700px; margin: 0 auto; color: white;">
+                <h3 style="color: white; margin-bottom: 20px; font-size: 2rem;">
+                    🌟 Monthly Community Access
+                </h3>
+                
+                <p style="margin-bottom: 20px; font-size: 1.1rem;">
+                    Get the SAME community access, but pay monthly instead of annually. Perfect for writers on a budget!
+                </p>
+
+                <div style="font-size: 3.5rem; font-weight: 800; color: #fbbf24; margin: 20px 0;">
+                    $47/month
+                </div>
+                <div style="color: #fbbf24; font-weight: 600; margin-bottom: 30px;">
+                    💰 No long-term commitment - Cancel anytime!
+                </div>
+
+                <ul style="text-align: left; margin-bottom: 30px; line-height: 2;">
+                    <li><strong>✅</strong> Full Community Access</li>
+                    <li><strong>✅</strong> Weekly Group Coaching Calls</li>
+                    <li><strong>✅</strong> Advanced Training Library</li>
+                    <li><strong>✅</strong> Networking with Authors</li>
+                    <li><strong>✅</strong> Monthly Workshops</li>
+                    <li><strong>✅</strong> Book Launch Support</li>
+                    <li><strong>✅</strong> Exclusive Bonuses</li>
+                    <li><strong>✅</strong> 24/7 Community Support</li>
+                </ul>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+                    <a href="#" onclick="acceptDownsell(); return false;" class="btn btn-primary btn-large pulse">
+                        YES! Start Monthly - $47/month
+                    </a>
+                    <a href="#" onclick="declineAll(); return false;" class="btn btn-warning">
+                        No thanks, maybe later
+                    </a>
+                </div>
+
+                <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.9;">
+                    * You can cancel anytime from your dashboard. No questions asked.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Thank You (Hidden by default) -->
+    <section class="section-light" id="final-thankyou" style="display: none; padding: 80px 0;">
+        <div class="container">
+            <h1 style="text-align: center; margin-bottom: 20px;">
+                🎁 You're All Set! Check Your Email!
+            </h1>
+            <p style="text-align: center; font-size: 1.25rem; color: #6b7280; max-width: 600px; margin: 0 auto 30px;">
+                We've sent you everything you need to get started. Your journey to becoming a published author begins now!
+            </p>
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <a href="index.html" class="btn btn-primary">
+                    Return to Course Home
+                </a>
+            </div>
+
+            <div style="max-width: 700px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                <h3 style="text-align: center; margin-bottom: 20px;">
+                    📧 What You'll Receive:
+                </h3>
+                
+                <ul style="line-height: 2;">
+                    <li><strong>✅</strong> Course login credentials</li>
+                    <li><strong>✅</strong> 40-Page eBook Template</li>
+                    <li><strong>✅</strong> Chapter outlines &amp; prompts</li>
+                    <li><strong>✅</strong> Publishing guide</li>
+                    <li><strong>✅</strong> Marketing checklist</li>
+                    <li><strong>✅</strong> Community access (if purchased)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #1f2937; color: white; padding: 40px 0; text-align: center;">
+        <div class="container">
+            <p>&amp;copy; 2025 How to Write a 40-Page eBook. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.875rem; opacity: 0.7;">
+                Questions? Contact us at support@ebookcourse.com
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function acceptUpsell() {
+            // Show loading state
+            alert('🎉 Excellent choice! Redirecting to complete your community membership...');
+            // In production, this would redirect to payment processing
+            setTimeout(function() {
+                document.getElementById('downsell-section').style.display = 'none';
+                document.querySelector('.upsell-section').style.display = 'none';
+                document.getElementById('final-thankyou').style.display = 'block';
+            }, 1500);
+        }
+
+        function showDownsell() {
+            document.querySelector('.upsell-section').style.display = 'none';
+            document.getElementById('downsell-section').style.display = 'block';
+            window.scrollTo(0, document.getElementById('downsell-section').offsetTop);
+        }
+
+        function acceptDownsell() {
+            alert('🎉 Great decision! Redirecting to set up your monthly membership...');
+            // In production, this would redirect to payment processing
+            setTimeout(function() {
+                document.getElementById('downsell-section').style.display = 'none';
+                document.getElementById('final-thankyou').style.display = 'block';
+            }, 1500);
+        }
+
+        function declineAll() {
+            document.querySelector('.upsell-section').style.display = 'none';
+            document.getElementById('downsell-section').style.display = 'none';
+            document.getElementById('final-thankyou').style.display = 'block';
+            window.scrollTo(0, document.getElementById('final-thankyou').offsetTop);
+        }
+
+        // Auto-scroll to upsell after 2 seconds
+        window.onload = function() {
+            setTimeout(function() {
+                const upsellSection = document.querySelector('.upsell-section');
+                if (upsellSection &amp;&amp; upsellSection.style.display !== 'none') {
+                    upsellSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }, 2000);
+        };
+    </script>
+</body>
+</html>

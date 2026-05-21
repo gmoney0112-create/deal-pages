@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - How to Write a 40-Page eBook Course</title>
+    <meta name="description" content="Complete your course purchase and get instant access to the complete ebook writing system.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teal-custom': '#0D9488',
+                        'success': '#10B981',
+                        'warning': '#F59E0B'
+                    },
+                    fontFamily: {
+                        'display': ['Playfair Display', 'serif'],
+                        'body': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        .order-bump {
+            transition: all 0.3s ease;
+        }
+        .order-bump.selected {
+            background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+            border-color: #10B981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        .order-bump:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        .price-highlight {
+            animation: priceUpdate 0.5s ease-in-out;
+        }
+        @keyframes priceUpdate {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); color: #10B981; }
+            100% { transform: scale(1); }
+        }
+        .checkout-bg {
+            background: linear-gradient(135deg, #FEFEFE 0%, #F3F4F6 100%);
+        }
+        .secure-badge {
+            background: linear-gradient(135deg, #10B981, #059669);
+        }
+    </style>
+</head>
+<body class="font-body bg-gray-50 text-gray-900">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-display font-bold text-xl text-teal-custom">
+                    Write Your eBook
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="text-sm text-gray-600">
+                        <span class="bg-warning text-white px-2 py-1 rounded text-xs font-medium">Limited Time</span>
+                    </div>
+                    <a href="index.html" class="text-gray-600 hover:text-teal-custom transition-colors text-sm">
+                        ← Back to Course
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Checkout Section -->
+    <section class="checkout-bg py-12">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-3 gap-8">
+                
+                <!-- Main Checkout Form -->
+                <div class="lg:col-span-2">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                        <!-- Header -->
+                        <div class="bg-teal-custom text-white p-6">
+                            <h1 class="font-display font-bold text-2xl mb-2">Complete Your Order</h1>
+                            <p class="text-teal-100">Get instant access to the complete ebook writing course</p>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="p-6 border-b border-gray-200">
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://kimi-web-img.moonshot.cn/img/unblast.com/6b8e18939ca868d693131e01f0b12d9568efcb1c.jpg" alt="Course" class="w-16 h-16 rounded-lg object-cover">
+                                <div class="flex-1">
+                                    <h3 class="font-semibold text-gray-900">How to Write a 40-Page eBook Course</h3>
+                                    <p class="text-gray-600 text-sm">12 modules, templates, publishing guide, and bonus materials</p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-2xl font-bold text-gray-900">$47</div>
+                                    <div class="text-sm text-gray-500 line-through">$197</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Bump Offers -->
+                        <div class="p-6 border-b border-gray-200 bg-gray-50">
+                            <h3 class="font-semibold text-lg text-gray-900 mb-4">Enhance Your Learning Experience</h3>
+                            
+                            <!-- Order Bump 1 -->
+                            <div class="order-bump bg-white rounded-xl p-4 border-2 border-gray-200 mb-4" id="bump1">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <input type="checkbox" id="bump1-checkbox" class="w-5 h-5 text-teal-custom rounded focus:ring-teal-custom">
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <span class="bg-warning text-white text-xs px-2 py-1 rounded font-medium">SPECIAL OFFER</span>
+                                            <span class="text-sm text-gray-600">Save 75%</span>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Complete eBook & Audiobook Package</h4>
+                                        <p class="text-gray-600 text-sm mb-3">
+                                            Get the complete course in multiple formats. Read the ebook version on any device, or listen to the audiobook while commuting or exercising. Perfect for different learning styles.
+                                        </p>
+                                        <div class="flex items-center space-x-4">
+                                            <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/6fe9af2b44c83e0fc31eb99ea4ce846962f8ec3d.jpg" alt="eBook and Audiobook" class="w-12 h-12 rounded-lg object-cover">
+                                            <div class="flex-1">
+                                                <ul class="text-sm text-gray-600 space-y-1">
+                                                    <li>• Complete course as downloadable eBook (PDF, EPUB)</li>
+                                                    <li>• Full audiobook narration (6+ hours)</li>
+                                                    <li>• Listen anywhere - phone, car, gym</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-lg font-bold text-gray-900">$14.99</div>
+                                        <div class="text-sm text-gray-500 line-through">$59</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Order Bump 2 -->
+                            <div class="order-bump bg-white rounded-xl p-4 border-2 border-gray-200" id="bump2">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 mt-1">
+                                        <input type="checkbox" id="bump2-checkbox" class="w-5 h-5 text-teal-custom rounded focus:ring-teal-custom" disabled>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center space-x-2 mb-2">
+                                            <span class="bg-success text-white text-xs px-2 py-1 rounded font-medium">BEST VALUE</span>
+                                            <span class="text-sm text-gray-600">Save 70%</span>
+                                        </div>
+                                        <h4 class="font-semibold text-gray-900 mb-2">Ultimate Bundle: Paperback + eBook + Audiobook</h4>
+                                        <p class="text-gray-600 text-sm mb-3">
+                                            Get everything in Order Bump 1 PLUS a physical paperback copy delivered to your door. Perfect for reference, note-taking, and building your personal library.
+                                        </p>
+                                        <div class="flex items-center space-x-4">
+                                            <img src="https://kimi-web-img.moonshot.cn/img/www.freemockupworld.com/a62a06371f52fc053e3694753b38033baba8eea9.jpg" alt="Ultimate Bundle" class="w-12 h-12 rounded-lg object-cover">
+                                            <div class="flex-1">
+                                                <ul class="text-sm text-gray-600 space-y-1">
+                                                    <li>• Physical paperback book (shipped free)</li>
+                                                    <li>• Complete eBook package (PDF, EPUB)</li>
+                                                    <li>• Full audiobook (6+ hours)</li>
+                                                    <li>• Perfect for studying and reference</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 p-2 bg-blue-50 rounded-lg">
+                                            <p class="text-xs text-blue-800">
+                                                <strong>Requires Order Bump 1:</strong> Add the eBook & Audiobook package first to unlock this upgrade
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <div class="text-lg font-bold text-gray-900">$29.99</div>
+                                        <div class="text-sm text-gray-500 line-through">$99</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Checkout Form -->
+                        <div class="p-6">
+                            <form id="checkout-form">
+                                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">First Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
+                                        <input type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                    <input type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                    <p class="text-sm text-gray-500 mt-1">Your login details will be sent to this email</p>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">Card Number</label>
+                                    <div class="relative">
+                                        <input type="text" placeholder="1234 5678 9012 3456" required class="w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                        <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+                                            <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M2 4h20v16H2V4zm2 2v12h16V6H4zm2 2h12v2H6V8zm0 4h8v2H6v-2z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4 mb-6">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">Expiry Date</label>
+                                        <input type="text" placeholder="MM/YY" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">CVV</label>
+                                        <input type="text" placeholder="123" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-custom focus:border-transparent">
+                                    </div>
+                                </div>
+
+                                <div class="mb-6">
+                                    <label class="flex items-center space-x-3">
+                                        <input type="checkbox" required class="w-5 h-5 text-teal-custom rounded focus:ring-teal-custom">
+                                        <span class="text-sm text-gray-700">
+                                            I agree to the <a href="#" class="text-teal-custom hover:underline">Terms & Conditions</a> and <a href="#" class="text-teal-custom hover:underline">Privacy Policy</a>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="w-full bg-teal-custom text-white py-4 px-8 rounded-xl font-semibold text-lg hover:bg-teal-700 transition-all transform hover:scale-105">
+                                    Complete My Order
+                                </button>
+
+                                <div class="mt-4 text-center">
+                                    <div class="secure-badge text-white text-sm px-4 py-2 rounded-lg inline-flex items-center space-x-2">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
+                                        </svg>
+                                        <span>Secure SSL Checkout</span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-200 sticky top-6">
+                        <div class="p-6 border-b border-gray-200">
+                            <h3 class="font-semibold text-lg text-gray-900 mb-4">Order Summary</h3>
+                            
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-700">Course: How to Write a 40-Page eBook</span>
+                                    <span class="font-medium text-gray-900">$47.00</span>
+                                </div>
+                                
+                                <div id="bump1-summary" class="flex justify-between items-center text-gray-500 hidden">
+                                    <span>eBook & Audiobook Package</span>
+                                    <span>$14.99</span>
+                                </div>
+                                
+                                <div id="bump2-summary" class="flex justify-between items-center text-gray-500 hidden">
+                                    <span>Ultimate Bundle Upgrade</span>
+                                    <span>+$15.00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="border-t border-gray-200 mt-4 pt-4">
+                                <div class="flex justify-between items-center text-lg">
+                                    <span class="font-semibold text-gray-900">Total</span>
+                                    <span id="total-price" class="font-bold text-teal-custom price-highlight">$47.00</span>
+                                </div>
+                                <div class="text-sm text-gray-500 mt-1">
+                                    <span id="savings-text" class="text-success font-medium"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-6">
+                            <h4 class="font-semibold text-gray-900 mb-3">What's Included:</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>12 Video Modules</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>40-Page eBook Template</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Publishing & Marketing Guide</span>
+                                </li>
+                                <li class="flex items-center space-x-2">
+                                    <svg class="w-4 h-4 text-success" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                    </svg>
+                                    <span>Bonus Writing Prompts</span>
+                                </li>
+                            </ul>
+
+                            <div id="bump1-includes" class="hidden mt-4 pt-4 border-t border-gray-200">
+                                <h5 class="font-medium text-gray-900 mb-2">Plus eBook & Audiobook:</h5>
+                                <ul class="space-y-1 text-sm text-gray-700">
+                                    <li>• Downloadable eBook (PDF, EPUB)</li>
+                                    <li>• Full audiobook (6+ hours)</li>
+                                </ul>
+                            </div>
+
+                            <div id="bump2-includes" class="hidden mt-4 pt-4 border-t border-gray-200">
+                                <h5 class="font-medium text-gray-900 mb-2">Plus Ultimate Bundle:</h5>
+                                <ul class="space-y-1 text-sm text-gray-700">
+                                    <li>• Physical paperback book</li>
+                                    <li>• Downloadable eBook (PDF, EPUB)</li>
+                                    <li>• Full audiobook (6+ hours)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="p-6 bg-gray-50 border-t border-gray-200">
+                            <div class="text-center">
+                                <div class="text-sm text-gray-600 mb-2">✓ 30-Day Money-Back Guarantee</div>
+                                <div class="text-sm text-gray-600">✓ Instant Access After Purchase</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h3 class="font-semibold text-gray-900 mb-8">Trusted by 2,847+ Writers Worldwide</h3>
+                <div class="grid md:grid-cols-4 gap-8 items-center opacity-60">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-teal-custom">SSL</div>
+                        <div class="text-sm text-gray-600">Secure Checkout</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-teal-custom">30</div>
+                        <div class="text-sm text-gray-600">Day Guarantee</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-teal-custom">24/7</div>
+                        <div class="text-sm text-gray-600">Email Support</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-teal-custom">⭐4.9</div>
+                        <div class="text-sm text-gray-600">Average Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-50 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-sm text-gray-500">
+                © 2025 Terrance Gee. All rights reserved. | 
+                <a href="#" class="text-teal-custom hover:underline">Privacy Policy</a> | 
+                <a href="#" class="text-teal-custom hover:underline">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>
