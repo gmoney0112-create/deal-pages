@@ -5,13 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout - How to Write a 40-Page eBook Course</title>
     <link rel="stylesheet" href="styles.css">
-<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
 </head>
 <body>
-    <!-- Urgency Bar -->
     <div class="urgency-bar">⏰ Limited Time Offer - Lock in Your Price Before It Expires!</div>
 
-    <!-- Checkout Container -->
     <div class="container">
         <div class="checkout-container">
             <h1 style="text-align: center; margin-bottom: 10px;">Complete Your Purchase</h1>
@@ -27,116 +24,36 @@
                 </div>
                 
                 <hr style="margin: 15px 0; border: none; border-top: 1px solid #e5e7eb;">
-                
-                <div id="order-bumps">
-                    <!-- Order Bump 1 -->
-                    <div class="order-bump" id="bump1" onclick="toggleBump('bump1', 14.99)">
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <input type="checkbox" id="bump1-checkbox" style="width: 24px; height: 24px; margin-top: 5px;">
-                            <div>
-                                <strong>🎧 UPGRADE: eBook + Audiobook Bundle</strong>
-                                <p style="font-size: 0.9rem; color: #6b7280; margin: 5px 0 10px;">
-                                    Get the complete course materials in both eBook and audiobook formats. Listen on-the-go and learn while you commute, exercise, or relax!
-                                </p>
-                                <div>
-                                    <span style="text-decoration: line-through; color: #9ca3af;">$29.99</span>
-                                    <span class="bump-price"> $14.99</span>
-                                    <span class="bump-value"> - Save $15!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- Order Bump 2 -->
-                    <div class="order-bump" id="bump2" onclick="toggleBump('bump2', 29.99)">
-                        <div style="display: flex; align-items: flex-start; gap: 15px;">
-                            <input type="checkbox" id="bump2-checkbox" style="width: 24px; height: 24px; margin-top: 5px;">
-                            <div>
-                                <strong>📚 MEGA BUNDLE: Paperback + eBook + Audiobook</strong>
-                                <p style="font-size: 0.9rem; color: #6b7280; margin: 5px 0 10px;">
-                                    The ultimate collection! Get a beautiful paperback copy delivered to your door PLUS digital eBook and audiobook versions. Perfect for visual learners and those who love having physical copies!
-                                </p>
-                                <div>
-                                    <span style="text-decoration: line-through; color: #9ca3af;">$59.99</span>
-                                    <span class="bump-price"> $29.99</span>
-                                    <span class="bump-value"> - Save $30!</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <hr style="margin: 20px 0; border: none; border-top: 2px solid #e5e7eb;">
-
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <strong style="font-size: 1.5rem;">Total Today:</strong>
-                    <span style="font-size: 2.5rem; font-weight: 800; color: #2563eb;" id="total-price">$47.00</span>
-                </div>
-            </div>
-
-            <!-- Payment Form -->
-            <form id="checkout-form" onsubmit="submitOrder(event)">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                    <div>
-                        <h3 style="margin-bottom: 20px;">Billing Information</h3>
-                        
-                        <div class="form-group">
-                            <label>First Name *</label>
-                            <input type="text" id="firstName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Last Name *</label>
-                            <input type="text" id="lastName" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Email Address *</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Phone Number *</label>
-                            <input type="tel" id="phone" required>
-                        </div>
-                    </div>
-
-                    <div>
-                        <h3 style="margin-bottom: 20px;">Payment Information</h3>
-                        
-                        <div class="form-group">
-                            <label>Card Number *</label>
-                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="form-group">
-                                <label>Expiry Date *</label>
-                                <input type="text" id="expiry" placeholder="MM/YY" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>CVC *</label>
-                                <input type="text" id="cvc" placeholder="123" required>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Cardholder Name *</label>
-                            <input type="text" id="cardholderName" required>
-                        </div>
-                    </div>
+                <!-- What's Included -->
+                <div style="padding: 15px; background: #f0fdf4; border-radius: 8px; margin-bottom: 20px;">
+                    <p style="font-weight: 600; margin-bottom: 10px;">✅ What's Included:</p>
+                    <ul style="font-size: 0.9rem; color: #374151; line-height: 1.8;">
+                        <li>Full Video Course - 12 Modules</li>
+                        <li>Step-by-step eBook Writing System</li>
+                        <li>AI Writing Toolkit & Prompts</li>
+                        <li>Template Pack & Worksheets</li>
+                        <li>30-Day Money-Back Guarantee</li>
+                    </ul>
                 </div>
 
                 <!-- Guarantee Badge -->
-                <div class="guarantee-badge" style="justify-content: center; margin: 30px 0;">
+                <div class="guarantee-badge" style="justify-content: center; margin: 30px 0; text-align: center;">
                     🔒 30-Day Money-Back Guarantee - Risk-Free Purchase
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary btn-large" style="width: 100%;">
-                    Complete Purchase - <span id="button-price">$47.00</span>
-                </button>
+                <!-- Stripe Payment Button -->
+                <div style="text-align: center;">
+                    <p style="color: #6b7280; margin-bottom: 20px; font-size: 0.95rem;">
+                        You'll be redirected to Stripe's secure checkout to complete payment.
+                    </p>
+                    <a href="https://buy.stripe.com/6Uo9AVamt6sc3OudNJ3Ru0q" 
+                       target="_blank"
+                       class="btn btn-primary btn-large" 
+                       style="display: inline-block; text-decoration: none; width: 100%; text-align: center; box-sizing: border-box;">
+                        Buy Now — $47.00
+                    </a>
+                </div>
 
                 <p style="text-align: center; margin-top: 20px; font-size: 0.875rem; color: #6b7280;">
                     <img src="https://img.icons8.com/color/48/000000/visa.png" alt="Visa" style="width: 40px; height: auto; vertical-align: middle; margin: 0 5px;">
@@ -147,102 +64,17 @@
                 <p style="text-align: center; margin-top: 15px; font-size: 0.8rem; color: #9ca3af;">
                     By completing this purchase, you agree to our Terms of Service and Privacy Policy.
                 </p>
-            </form>
+            </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer style="background: #1f2937; color: white; padding: 40px 0; text-align: center; margin-top: 60px;">
         <div class="container">
-            <p>&amp;copy; 2025 How to Write a 40-Page eBook. All rights reserved.</p>
+            <p>&copy; 2025 How to Write a 40-Page eBook. All rights reserved.</p>
             <p style="margin-top: 10px; font-size: 0.875rem; opacity: 0.7;">
                 Questions? Contact us at support@ebookcourse.com
             </p>
         </div>
     </footer>
-
-    <script>
-        let basePrice = 47.00;
-        let bump1Price = 0;
-        let bump2Price = 0;
-
-        function toggleBump(bumpId, price) {
-            const bump = document.getElementById(bumpId);
-            const checkbox = document.getElementById(bumpId + '-checkbox');
-            
-            if (bumpId === 'bump1') {
-                if (bump1Price === 0) {
-                    bump1Price = price;
-                    checkbox.checked = true;
-                    bump.classList.add('selected');
-                } else {
-                    bump1Price = 0;
-                    checkbox.checked = false;
-                    bump.classList.remove('selected');
-                }
-            } else if (bumpId === 'bump2') {
-                if (bump2Price === 0) {
-                    bump2Price = price;
-                    checkbox.checked = true;
-                    bump.classList.add('selected');
-                    // If bump2 is selected, deselect bump1 (mutually exclusive or upsell logic)
-                    if (bump1Price > 0) {
-                        toggleBump('bump1', 14.99);
-                    }
-                } else {
-                    bump2Price = 0;
-                    checkbox.checked = false;
-                    bump.classList.remove('selected');
-                }
-            }
-            
-            updateTotal();
-        }
-
-        function updateTotal() {
-            const total = basePrice + bump1Price + bump2Price;
-            const formattedTotal = '$' + total.toFixed(2);
-            
-            document.getElementById('total-price').textContent = formattedTotal;
-            document.getElementById('button-price').textContent = formattedTotal;
-        }
-
-        function submitOrder(event) {
-            event.preventDefault();
-            
-            // Show loading state
-            const button = event.target.querySelector('button[type="submit"]');
-            button.innerHTML = 'Processing...';
-            button.disabled = true;
-            
-            // Simulate payment processing
-            setTimeout(function() {
-                // Redirect to thank you page
-                window.location.href = 'thank-you.html';
-            }, 2000);
-        }
-
-        // Format card number input
-        document.getElementById('cardNumber').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\s/g, '').replace(/\D/g, '');
-            let formattedValue = '';
-            for (let i = 0; i < value.length; i++) {
-                if (i > 0 && i % 4 === 0) {
-                    formattedValue += ' ';
-                }
-                formattedValue += value[i];
-            }
-            e.target.value = formattedValue;
-        });
-
-        // Format expiry date input
-        document.getElementById('expiry').addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length >= 2) {
-                value = value.substring(0, 2) + '/' + value.substring(2, 4);
-            }
-            e.target.value = value;
-        });
-    </script>
 </body>
 </html>

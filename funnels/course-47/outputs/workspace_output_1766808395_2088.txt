@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - How to Write a 40-Page eBook Course</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Thank You Hero -->
+    <section class="thank-you-hero">
+        <div class="container">
+            <h1>🎉 Congratulations! Welcome to the Author Community!</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 30px; opacity: 0.95;">
+                Your purchase is complete. Check your email for your login credentials and course access details.
+            </p>
+            
+            <div style="background: rgba(255,255,255,0.2); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto;">
+                <h3 style="color: white; margin-bottom: 20px;">What's Next:</h3>
+                <ul style="text-align: left; line-height: 2;">
+                    <li>✓ Check your email for login details</li>
+                    <li>✓ Access the course dashboard</li>
+                    <li>✓ Join our private community</li>
+                    <li>✓ Start your first lesson!</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+

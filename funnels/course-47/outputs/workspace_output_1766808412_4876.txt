@@ -1,0 +1,4 @@
+-rw-r--r-- 1 root root  12K Dec 27 04:01 /workspace/checkout.html
+-rw-r--r-- 1 root root  21K Dec 27 03:59 /workspace/index.html
+-rw-r--r-- 1 root root 7.7K Dec 27 03:53 /workspace/styles.css
+-rw-r--r-- 1 root root  11K Dec 27 04:04 /workspace/thank-you.html

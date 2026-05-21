@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - How to Write a 40-Page eBook Course</title>
+    <link rel="stylesheet" href="styles.css">
+<script src="https://sites.super.myninja.ai/_assets/ninja-daytona-script.js"></script>
+</head>
+<body>
+    <!-- Urgency Bar -->
+    <div class="urgency-bar">⏰ Limited Time Offer - Lock in Your Price Before It Expires!</div>
+
+    <!-- Checkout Container -->
+    <div class="container">
+        <div class="checkout-container">
+            <h1 style="text-align: center; margin-bottom: 10px;">Complete Your Purchase</h1>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 30px;">You're one step away from becoming a published author!</p>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3 style="margin-bottom: 20px;">Order Summary</h3>
+                
+                <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                    <strong>How to Write a 40-Page eBook Course</strong>
+                    <span style="color: #10b981; font-weight: 700;">$47.00</span>
+                </div>
+                
+                <hr style="margin: 15px 0; border: none; border-top: 1px solid #e5e7eb;">
+                
