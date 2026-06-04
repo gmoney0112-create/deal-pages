@@ -79,19 +79,26 @@ When updating prices, update both the display copy and the Stripe link (they mus
 
 ---
 
-## Known issues to fix
-
-### CRITICAL — checkout.js is an orphaned file with a fake payment form
-`funnels/course-7/checkout.js` contains a custom card-collection form (card number, expiry, CVV fields) that validates inputs and then **fakes payment processing** — it runs a 2-second `setTimeout` and redirects to `thank-you.html` without charging anyone. This file is NOT referenced by any live HTML. Do not wire it up. Either delete it or replace with real Stripe.js integration if a custom form is ever needed.
+## Known issues
 
 ### MEDIUM — Download PDFs are publicly accessible
 All files under `downloads/` are served publicly with no authentication. Anyone with the URL can download course materials without purchasing. If content protection matters, move PDFs behind a gated link or use a platform that enforces access control (e.g., Stripe fulfillment, Gumroad, etc.).
 
-### MEDIUM — Third-party scripts loaded without SRI
-`funnels/course-47/index.html` loads `https://sites.super.myninja.ai/_assets/ninja-daytona-script.js` — unknown third-party script with no Subresource Integrity hash. All CDN scripts across both funnels lack SRI. Consider adding `integrity` + `crossorigin` attributes.
+### MEDIUM — ninja.ai script needs audit (`funnels/course-47/index.html`)
+`https://sites.super.myninja.ai/_assets/ninja-daytona-script.js` is an unversioned third-party script — SRI cannot be applied to it. A warning comment has been added in the HTML. Audit what this script does (analytics? affiliate tracking?) and remove it if unused.
+
+### LOW — Tailwind CDN has no SRI
+`https://cdn.tailwindcss.com` is the Tailwind "play" script — it generates CSS on the fly from your HTML, so its output is non-deterministic. SRI is not applicable. If SRI coverage is important, replace with a local Tailwind build.
 
 ### LOW — Terms / Privacy links are placeholders
 Both funnels reference Terms of Service and Privacy Policy but link to `#`. These need real policy pages before taking live payments.
+
+---
+
+## Resolved issues
+
+- ~~checkout.js fake payment form~~ — `funnels/course-7/checkout.js` deleted (was never wired up to live HTML)
+- ~~CDN scripts without SRI~~ — SHA-384 integrity hashes added to all versioned scripts in `funnels/course-7/index.html` and `funnels/course-7/thank-you.html`
 
 ---
 
