@@ -128,14 +128,14 @@ document.addEventListener('DOMContentLoaded', function() {
             orderSummary.innerHTML = summaryHTML;
             totalPaid.textContent = `$${orderDetails.total.toFixed(2)}`;
         } else {
-            // Fallback if no order details
+            // Fallback for buyers arriving via Stripe redirect (localStorage not set by Stripe)
             orderSummary.innerHTML = `
                 <div class="flex justify-between items-center py-2">
                     <span class="text-gray-700">How to Write a 40-Page eBook Course</span>
-                    <span class="font-medium text-gray-900">$47.00</span>
+                    <span class="font-medium text-gray-900">$7.00</span>
                 </div>
             `;
-            totalPaid.textContent = '$47.00';
+            totalPaid.textContent = '$7.00';
         }
     }
     
@@ -158,28 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Handle community joining
+    // Handle community joining — redirect to Stripe for each plan
+    // TODO: replace placeholder URLs with real Stripe Payment Links
     function joinCommunity(plan) {
-        const button = plan === 'annual' ? joinCommunityBtn : joinMonthlyBtn;
-        const originalText = button.textContent;
-        
-        // Show loading state
-        button.textContent = 'Processing...';
-        button.disabled = true;
-        
-        // Simulate payment processing
-        setTimeout(() => {
-            // Hide current offer
-            if (plan === 'annual') {
-                communityOfferMain.style.display = 'none';
-            } else {
-                downsellOfferSection.style.display = 'none';
-            }
-            
-            // Show success message
-            showCommunitySuccess(plan);
-            
-        }, 2000);
+        const stripeLinks = {
+            annual:  'https://buy.stripe.com/REPLACE_WITH_ANNUAL_197_LINK',
+            monthly: 'https://buy.stripe.com/REPLACE_WITH_MONTHLY_47_LINK'
+        };
+        window.location.href = stripeLinks[plan];
     }
     
     // Show community success message
