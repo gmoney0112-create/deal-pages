@@ -158,14 +158,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Handle community joining — redirect to Stripe for each plan
-    // TODO: replace placeholder URLs with real Stripe Payment Links
+    // Handle community joining — Skool charges natively on their platform
     function joinCommunity(plan) {
-        const stripeLinks = {
-            annual:  'https://buy.stripe.com/REPLACE_WITH_ANNUAL_197_LINK',
-            monthly: 'https://buy.stripe.com/REPLACE_WITH_MONTHLY_47_LINK'
-        };
-        window.location.href = stripeLinks[plan];
+        window.location.href = 'https://www.skool.com/money-masters-academy-5443/';
     }
     
     // Show community success message
